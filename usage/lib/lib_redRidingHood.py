@@ -4,6 +4,8 @@ import os, os.path
 import nltk
 from nltk.corpus import stopwords
 
+nltk.download('stopwords')
+
 file= open("/Users/ebrarsahin/GitHub/Graduation-Project/file/rrh.html", "r")
 story= file.read()
 file.close()
@@ -48,19 +50,13 @@ for key, val in freq.items():
     print (str(key) + ':' + str(val))
 file_token_freq.close()
 
-# #clean tokens before plotting
-# # clean_tokens = tokens[:]
-# #
-# # for token in tokens:
-# #
-# #     if token in stopwords.words('bir'):
-# #         clean_tokens.remove(token)
-# #     if token in stopwords.words('ve'):
-# #         clean_tokens.remove(token)
-# #     if token in stopwords.words('daha'):
-# #         clean_tokens.remove(token)
-# #     if token in stopwords.words('ok'):
-# #         clean_tokens.remove(token)
-#
-#
+#clean tokens before plotting
+
+clean_tokens = tokens[:]
+
+for token in tokens:
+
+    if token in stopwords.words('english'):
+        clean_tokens.remove(token)
+
 freq.plot(20, cumulative=False)
