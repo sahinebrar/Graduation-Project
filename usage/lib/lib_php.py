@@ -18,7 +18,7 @@ if num_files == 0:
 print num_files
 
 #write to file
-file_html = open("/Users/ebrarsahin/GitHub/Graduation-Project/file/html"+str((num_files/2))+".txt", "a")
+file_html = open("/Users/ebrarsahin/GitHub/Graduation-Project/file/html"+str((num_files))+".txt", "w")
 file_html.write(html)
 file_html.close()
 
@@ -30,12 +30,12 @@ soup = BeautifulSoup(html, "html5lib")
 
 text = soup.get_text(strip=True)
 text=text.encode('utf-8').decode('ascii','ignore')
-file_text = open("/Users/ebrarsahin/GitHub/Graduation-Project/file/text"+str((num_files/2))+".txt", "a")
+file_text = open("/Users/ebrarsahin/GitHub/Graduation-Project/file/text"+str((num_files))+".txt", "w")
 file_text.write(text)
 file_text.close()
 
 #print(text)
-file_tokens = open("/Users/ebrarsahin/GitHub/Graduation-Project/file/tokens"+str((num_files/2))+".txt", "a")
+file_tokens = open("/Users/ebrarsahin/GitHub/Graduation-Project/file/tokens"+str((num_files))+".txt", "w")
 
 for t in text.split():
     print (t)
