@@ -1,6 +1,7 @@
 # coding=utf-8
 from bs4 import BeautifulSoup
 import os, os.path
+import nltk
 try:
     from urllib.request import urlopen
 except ImportError:
@@ -42,3 +43,12 @@ for t in text.split():
     print (t)
     file_tokens.write(t+'\n')
 file_tokens.close()
+
+tokens = [t for t in text.split()]
+freq = nltk.FreqDist(tokens)
+
+for key, val in freq.items():
+    file_token_freq = open("/Users/ebrarsahin/GitHub/Graduation-Project/file/token_freq" + str((num_files / 2)) + ".txt", "a")
+    file_token_freq.write(str(key) + ':' + str(val) + '\n')
+    print (str(key) + ':' + str(val))
+file_token_freq.close()
