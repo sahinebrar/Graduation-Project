@@ -7,7 +7,7 @@ try:
 except ImportError:
     from urllib2 import urlopen
 
-response = urlopen('http://php.net/')
+response = urlopen('https://www.fizikist.com/gelecegin-parcacik-carpistiricilari-uzerine/')
 
 html = response.read()
 
