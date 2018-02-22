@@ -2,14 +2,11 @@
 from bs4 import BeautifulSoup
 import os, os.path
 import nltk
-try:
-    from urllib.request import urlopen
-except ImportError:
-    from urllib2 import urlopen
+from nltk.corpus import stopwords
 
-response = urlopen('https://www.fizikist.com/gelecegin-parcacik-carpistiricilari-uzerine/')
-
-html = response.read()
+file= open("/Users/ebrarsahin/GitHub/Graduation-Project/file/rrh.html", "r")
+story= file.read()
+file.close()
 
 #find number of files
 num_files= len([name for name in os.listdir('.') if os.path.isfile(name)])
@@ -18,15 +15,15 @@ if num_files == 0:
 print num_files
 
 #write to file
-file_html = open("/Users/ebrarsahin/GitHub/Graduation-Project/file/html"+str((num_files))+".txt", "w")
-file_html.write(html)
+file_html = open("/Users/ebrarsahin/GitHub/Graduation-Project/file/story.txt", "w")
+file_html.write(story)
 file_html.close()
-#
-# #print (html)
-#
-#get rid of html tags
+# #
+# # #print (html)
+# #
+# #get rid of html tags
 
-soup = BeautifulSoup(html, "html5lib")
+soup = BeautifulSoup(story, "html5lib")
 
 text = soup.get_text(strip=True)
 text=text.encode('utf-8').decode('ascii','ignore')
@@ -51,6 +48,19 @@ for key, val in freq.items():
     print (str(key) + ':' + str(val))
 file_token_freq.close()
 
-
-
+# #clean tokens before plotting
+# # clean_tokens = tokens[:]
+# #
+# # for token in tokens:
+# #
+# #     if token in stopwords.words('bir'):
+# #         clean_tokens.remove(token)
+# #     if token in stopwords.words('ve'):
+# #         clean_tokens.remove(token)
+# #     if token in stopwords.words('daha'):
+# #         clean_tokens.remove(token)
+# #     if token in stopwords.words('ok'):
+# #         clean_tokens.remove(token)
+#
+#
 freq.plot(20, cumulative=False)
