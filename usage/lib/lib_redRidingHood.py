@@ -42,15 +42,8 @@ for t in text.split():
 file_tokens.close()
 
 tokens = [t for t in text.split()]
-freq = nltk.FreqDist(tokens)
 
-for key, val in freq.items():
-    file_token_freq = open("/Users/ebrarsahin/GitHub/Graduation-Project/file/token_freq" + str((num_files / 2)) + ".txt", "w")
-    file_token_freq.write(str(key) + ':' + str(val) + '\n')
-    print (str(key) + ':' + str(val))
-file_token_freq.close()
-
-#clean tokens before plotting
+# clean tokens before plotting
 
 clean_tokens = tokens[:]
 
@@ -59,4 +52,11 @@ for token in tokens:
     if token in stopwords.words('english'):
         clean_tokens.remove(token)
 
+freq = nltk.FreqDist(clean_tokens)
+
+for key, val in freq.items():
+    file_token_freq = open("/Users/ebrarsahin/GitHub/Graduation-Project/file/token_freq" + str((num_files / 2)) + ".txt", "w")
+    file_token_freq.write(str(key) + ':' + str(val) + '\n')
+    print (str(key) + ':' + str(val))
+file_token_freq.close()
 freq.plot(20, cumulative=False)
