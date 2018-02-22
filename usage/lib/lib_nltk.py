@@ -52,3 +52,5 @@ for key, val in freq.items():
     file_token_freq.write(str(key) + ':' + str(val) + '\n')
     print (str(key) + ':' + str(val))
 file_token_freq.close()
+
+freq.plot(20, cumulative=False)
