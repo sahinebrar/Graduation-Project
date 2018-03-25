@@ -48,4 +48,3 @@ send_button = tkinter.Button(top, text="Send", command=send)
 send_button.pack()
 
 tkinter.mainloop()  # Starts GUI execution.
-
